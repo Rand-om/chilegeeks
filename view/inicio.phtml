@@ -9,24 +9,24 @@
 	<script src="js/funciones.js"></script>
 </head>
 <body>
-	<form action="?pag=validar_login">
-		<input type="text" placeholder="Nombre de usuario">
+	<form name="login" method="post" action="?pag=validar_login">
+		<input type="text" name="nick" maxlength="20" id="lnick" placeholder="Nombre de usuario">
 		<br>
-		<input type="text" placeholder="Contraseña">
+		<input type="password" name="pass" maxlength="50" id="lpass" placeholder="Contraseña">
 		<br>
-		<button class="uk-button-success" id="validar_login">Ingresar</button>
+		<input type="button" value="Ingresar" onclick="vl()" id="validar_login">
 	</form>
 	<div class="uk-grid-divider"></div>
 	<form name="registro" method="post" action="?pag=validar_registro">
-		<input type="text" name="nombre" id="nombre" placeholder="Nombre">
+		<input type="text" name="nombre" maxlength="20" id="nombre" placeholder="Nombre">
 		<br>
-		<input type="text" name="nick" id="nick" placeholder="Nick">
+		<input type="text" name="nick" maxlength="20" id="nick" placeholder="Nick">
 		<br>
-		<input type="email" name="email" id="email" placeholder="email" required>
+		<input type="email" name="email" maxlength="50" id="email" placeholder="email" required>
 		<br>
-		<input type="password" name="pass" id="pass" placeholder="Contraseña">
+		<input type="password" name="pass" maxlength="50" id="pass" placeholder="Contraseña">
 		<br>
-		<input type="password" name="pass2" id="pass2" placeholder="Repetir contraseña">
+		<input type="password" name="pass2" maxlength="50" id="pass2" placeholder="Repetir contraseña">
 		<br>
 		<button class="uk-button-success" id="validar_registro">Ingresar</button>
 	</form>

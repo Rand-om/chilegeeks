@@ -1,4 +1,3 @@
-$(function(){
 
 	$("#validar_registro").on("click", function(e){
 
@@ -58,4 +57,23 @@ $(function(){
 
 	});
 
-});
+function vl(){
+		var nick = $("#lnick"),
+			pass = $("#lpass");
+
+		if(nick.val() == ""){
+			alert("Debe proporcionar su nick");
+			nick.focus();
+			return false;
+		}else{
+			pass.focus();
+		}
+
+		if(pass.val() == ""){
+			alert("Debe proporcionar su contraseña");
+			pass.focus();
+			return false;
+		}else{
+			document.login.submit();
+		}
+	}

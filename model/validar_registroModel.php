@@ -8,9 +8,26 @@ class validar_registro {
 	private $pass;
 	private $pass2;
 
-	public function datos(){
+	public function buscarUsuarioExistente(){
+
+		$con = Coneccion::con();
+
+		$this->nick = $_POST["nick"];
+		$this->email = $_POST["email"];
+
+		$sql = $con->query("select * from usuarios where nick='".$this->nick."' or email='".$this->email."'");
+		if($sql->num_rows == 0){
+			echo 0;
+		}else{
+			echo 1;
+		}
+
+	}
+
+	public function ingresar_usuario(){
 		
 		$con = Coneccion::con();
+
 		$this->nombre = $_POST["nombre"];
 		$this->nick = $_POST["nick"];
 		$this->email = $_POST["email"];
@@ -20,9 +37,9 @@ class validar_registro {
 		$sql = $con->query("insert into usuarios values(null,'".$this->nombre."','".$this->nick."','".$this->email."','".$this->pass."','".$this->pass2."',NOW())");
 
 		if($sql){
-			echo "Exito";
+			echo "Registro exitoso, ahora inicia sesión con tu nick y contraseña";
 		}else{
-			echo "error";
+			echo "Error en el registro, por favor, intentalo nuevamente";
 		}
 		mysqli_close($con);
 
