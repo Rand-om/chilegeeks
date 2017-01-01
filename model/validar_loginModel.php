@@ -17,7 +17,12 @@ class validar_login {
 		if($filas == 0){
 			echo "Datos inválidos";
 		}else{
-			echo "Logeo exitoso, entrando a tu perfil";
+			while($reg=$sql->fetch_array()){
+				$_SESSION["nombre"] = $reg["nombre"];
+				$_SESSION["nick"] = $reg["nick"];
+				$_SESSION["email"] = $reg["email"];
+			}
+			header("location: ?pag=home");
 		}
 
 	}

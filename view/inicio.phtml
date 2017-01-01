@@ -4,31 +4,122 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" href="css/uikit.css">
-	<script src="js/jquery.js"></script>
-	<script src="js/uikit.min.js"></script>
-	<script src="js/funciones.js"></script>
 </head>
 <body>
-	<form name="login" method="post" action="?pag=validar_login">
-		<input type="text" name="nick" maxlength="20" id="lnick" placeholder="Nombre de usuario">
-		<br>
-		<input type="password" name="pass" maxlength="50" id="lpass" placeholder="Contraseña">
-		<br>
-		<input type="button" value="Ingresar" onclick="vl()" id="validar_login">
-	</form>
-	<div class="uk-grid-divider"></div>
-	<form name="registro" method="post" action="?pag=validar_registro">
-		<input type="text" name="nombre" maxlength="20" id="nombre" placeholder="Nombre">
-		<br>
-		<input type="text" name="nick" maxlength="20" id="nick" placeholder="Nick">
-		<br>
-		<input type="email" name="email" maxlength="50" id="email" placeholder="email" required>
-		<br>
-		<input type="password" name="pass" maxlength="50" id="pass" placeholder="Contraseña">
-		<br>
-		<input type="password" name="pass2" maxlength="50" id="pass2" placeholder="Repetir contraseña">
-		<br>
-		<button class="uk-button-success" id="validar_registro">Ingresar</button>
-	</form>
+	
+
+		<!--<ul class="uk-nav uk-nav-navbar">
+		  <li class="uk-nav-header">Filter:</li>
+		  <li data-uk-filter="" class="uk-active"><a href="#">ALL</a></li>
+		  <li data-uk-filter="blue"><a href="#">BLUE</a></li>
+		  <li data-uk-filter="green"><a href="#">GREEN</a></li>
+		  <li class="uk-nav-divider"></li>
+		</ul>
+		<ul class="uk-nav uk-nav-navbar">
+		  <li class="uk-nav-header">Sort:</li>
+		  <li data-uk-sort="numbers">
+		    <a href="#">NUMBERS <i class="uk-icon-sort-numeric-asc"></i></a>
+		  </li>
+		  <li data-uk-sort="numbers:desc">
+		    <a href="#">NUMBERS <i class="uk-icon-sort-numeric-desc"></i>
+		  </a></li>
+		  <li data-uk-sort="letters">
+		    <a href="#">LETTERS <i class="uk-icon-sort-alpha-asc"></i></a>
+		  </li>
+		  <li data-uk-sort="letters:desc">
+		    <a href="#">LETTERS <i class="uk-icon-sort-alpha-desc"></i></a>
+		  </li>
+		</ul>-->
+
+	<!-- Menú de navegación -->
+	<nav class="uk-navbar" data-uk-tab>
+		<ul class="uk-navbar-nav">
+			<li class="uk-parent"><a href="">Registrate</a></li>
+			<li class="uk-parent"><a href="">Inicia sesión</a></li>
+		</ul>
+	</nav>
+	<!-- Fin menú de navegación -->
+
+	
+	<div class="uk-container uk-container-center uk-margin-large-top">
+		<div class="uk-grid">
+
+			<!-- Formulario de registro -->
+			<div class="uk-width-2-4">
+				<div class="uk-panel uk-panel-box">
+					<h3 class="uk-panel-title">Registrate!</h3>
+					<form name="registro" method="post" action="?pag=validar_registro" class="uk-form">
+						<div class="uk-form-row">
+							<div class="uk-form-controls">
+								<div class="uk-form-row">
+									<input type="text" onkeyup="inputSuccess(this.id); esconderAlerta('anombre')" name="nombre" id="nombre" placeholder="Nombre" class="uk-form-width-large">
+									<div id="anombre" class="uk-alert uk-alert-danger">Debe escribir un nombre</div>
+								</div>
+								
+								<div class="uk-form-row">
+									<input type="text" onkeyup="inputSuccess(this.id); esconderAlerta('anick')" name="nick" id="nick" placeholder="Nick" class="uk-form-width-large">
+									<div id="anick" class="uk-alert uk-alert-danger">Debe escribir un nick</div>
+								</div>
+								
+								<div class="uk-form-row">
+									<input type="text" name="email" onkeyup="inputSuccess(this.id); esconderAlerta('aemail');" id="email" placeholder="Email" class="uk-form-width-large">
+									<div id="aemail" class="uk-alert uk-alert-danger">Debe escribir un email</div>
+									<div id="aemailv" class="uk-alert uk-alert-danger">Debe ingresar un email válido</div>
+								</div>
+								
+								<div class="uk-form-row">
+									<input type="password" onkeyup="inputSuccess(this.id); esconderAlerta('apass')" name="pass" id="pass" placeholder="Contraseña" class="uk-form-width-large">
+									<div id="apass" class="uk-alert uk-alert-danger">Debe escribir una contraseña</div>
+								</div>
+								
+								<div class="uk-form-row">
+									<input type="password" onkeyup="inputSuccess(this.id); esconderAlerta('apass2');" name="pass2" id="pass2" placeholder="Confirmar contraseña" class="uk-form-width-large">
+									<div id="apass" class="uk-alert uk-alert-danger">Debe confirmar la contraseña</div>
+									<div id="apass2nc" class="uk-alert uk-alert-danger">Las contraseñas no coinciden</div>
+								</div>
+								
+								<div class="uk-form-row">
+									<button id="validar_registro" class="uk-button uk-button-success">Registrarme</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- Fin formulario de registro -->
+			
+
+			<!-- Formulario de Login -->
+			<div class="uk-width-2-4">
+				<div class="uk-panel uk-panel-box">
+					<h3 class="uk-panel-title">Inicia sesión</h3>
+					<form name="login" method="post" action="?pag=validar_login" class="uk-form">
+						<div class="uk-form-row">
+							<div class="uk-form-controls">
+								<div class="uk-form-row">
+									<input type="text" name="nick" onkeyup="inputSuccess(this.id); esconderAlerta('lonick')" id="lnick" placeholder="Nick" class="uk-form-width-large">
+									<div id="lonick" class="uk-alert uk-alert-danger">Debe escribir un nick</div>
+								</div>
+								
+								<div class="uk-form-row">
+									<input type="password" name="pass" onkeyup="inputSuccess(this.id); esconderAlerta('lopass')" id="lpass" placeholder="Contraseña" class="uk-form-width-large">
+									<div id="lopass" class="uk-alert uk-alert-danger">Debe escribir un nick</div>
+								</div>
+								
+								<div class="uk-form-row">
+									<button id="validar_login" class="uk-button uk-button-success">Registrarme</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- Fin formulario de Login -->
+
+		</div>
+	</div>
 </body>
 </html>
+<script src="js/jquery.js"></script>
+<script src="js/funciones.js"></script>
+<script src="js/uikit.js"></script>

@@ -7,7 +7,7 @@ $res=$vr->buscarUsuarioExistente();
 
 if($res == 0){
 	$vr->ingresar_usuario();
-}else{
+}else if($res > 0){
 	echo "Hubo un error, intentalo nuevamente";
 }
 

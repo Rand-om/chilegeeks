@@ -16,11 +16,7 @@ class validar_registro {
 		$this->email = $_POST["email"];
 
 		$sql = $con->query("select * from usuarios where nick='".$this->nick."' or email='".$this->email."'");
-		if($sql->num_rows == 0){
-			echo 0;
-		}else{
-			echo 1;
-		}
+		return $sql->num_rows;
 
 	}
 
